@@ -1,3 +1,4 @@
+# Orange Pi Zero 3 with 3.5 Inch TFT Display
 My Friend Rafi had an idea of making a manikin head with a computer that displays a ai chat, roleplaying as a depiction of a IRobot robot. He asked me if i could help with the electronics and i agreed to help.
 
 From my experience and knowledge, I figured the plan would be something along the lines of:
