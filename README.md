@@ -1,4 +1,4 @@
-My Friend Rafi had an idea of making a manakin head with a computer that displays a ai chat, roleplaying as a depiction of a IRobot robot. He asked me if i could help with the electronics and i agreed to help.
+My Friend Rafi had an idea of making a manikin head with a computer that displays a ai chat, roleplaying as a depiction of a IRobot robot. He asked me if i could help with the electronics and i agreed to help.
 
 From my experience and knowledge, I figured the plan would be something along the lines of:
 1. Get a Raspberry pi/equivalent and a small LCD display (SPI)
@@ -32,6 +32,7 @@ At first, the Armbian OS seemed promising, with it being able to detect the devi
 The most useful [thread](https://forum.armbian.com/topic/46824-orange-pi-zero-3-ili9486-tft-lcd/) i found is a user trying the same thing as we are right then. They included their findings and code to be compiled as an overlay for the OPi, essentially the drivers for the display. They also included the code for when the display is directly connected, which really helped a lot. 
 
 Having fresh installed the Armbian OS the second time, I put everything i knew into a sequential process:
+
 1. Install WiringOP to get the gpio command
 2. enable SPI through the armbian-config
 3. check whether the CS1 pin is on
@@ -40,12 +41,11 @@ Having fresh installed the Armbian OS the second time, I put everything i knew i
 6. "sudo reboot"
 7. The CS1 pin should display ALT4, meaning that it's configured correctly
 8. Check again with "ls /dev/spi*", there should be a output of "spidev1.1"
-9. "nano ili9341.dts"
+9. "nano ili9341.dts" to edit the configuration
 10. Copy and paste the configuration from the thread, making sure the GPIO pin for the CS0 is at PH9 and the touch at PC15
 11. Save and exit
-12. "sudo armbian-add-overlay ili9341.dts"
-13. It should be added to the overlay of the /boot/armbianEnv.txt
-14. "sudo reboot"
-15. The display should now work, you can check the kernel logs with "dmesg | grep spi"
+12. "sudo armbian-add-overlay ili9341.dts", It should be added to the overlay of the /boot/armbianEnv.txt
+13. "sudo reboot"
+14. The display should now work, you can check the kernel logs with "dmesg | grep spi"
 
 It took quite a while to get the screen working, but I'm happy that I could get it to work. With that out of the way, installing ollama is a easy curl command and "ollama run <model>". 
